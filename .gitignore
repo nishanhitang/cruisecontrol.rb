@@ -1,0 +1,60 @@
+# Bundler/Rubygems
+*.gem
+.bundle
+pkg/*
+tags
+test/tmp/
+bin/
+
+# Vagrant stuff
+acceptance_config.yml
+boxes/*
+/Vagrantfile
+/.vagrant
+
+# IDE junk
+.idea/*
+*.iml
+
+# Ruby Managers
+.rbenv
+.ruby-gemset
+.ruby-version
+.rvmrc
+
+# Temp files
+*~
+*.swp
+,*
+*.bak
+
+# OS-specific
+.DS_Store
+
+coverage
+__sandbox
+
+public/stylesheets/site.css
+public/documentation*
+public/builds
+
+log/
+tmp/
+cruisecontrol.iws
+*.iws
+*.ipr
+*.iml
+.tmtags
+tmtags
+dist/
+vendor/plugins/rails_upgrade
+vendor/ruby/
+vendor/jruby/
+vendor/bundle
+vendor/cache
+server_jar/target/
+
+config/ccrb.properties
+reports
+config/thin.yml
+

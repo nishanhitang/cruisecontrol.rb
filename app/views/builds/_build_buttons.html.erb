@@ -1,0 +1,40 @@
+<div class="buttons">
+  <% if project.building? %>
+    <%= image_tag 'spinner.gif', :class => "spinner" %>
+  <% end %>
+
+  <button id="release_note" >Release Note</button>
+
+  <%= render :partial => "builds/release_note_form", :locals => { :project => project } %>
+
+  <%= form_tag(build_project_path(:id => project), :class => "build_project") do %>
+
+    <% if project.builder_down? %>
+      <button type="submit" name="build_now" class="build_button">Start Builder</button>
+    <% elsif project.can_build_now? %>
+      <button type="submit" name="build_now" class="build_button">Build Now</button>
+    <% else %>
+      <button type="submit" name="build_now" class="build_button" disabled="disabled">Build Now</button>
+    <% end %>
+
+  <% end %>
+
+  <% unless project.builder_down? %>
+    <%= form_tag(kill_build_project_path(:id => project), :class => "build_project") do %>
+      <% if project.can_kill_builder? %>
+        <button type="submit" name="build_now" class="kill_build_button">Kill Builder</button>
+      <% else %>
+        <button type="submit" name="build_now" class="kill_build_button" disabled="disabled">Kill Builder</button>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+<script>
+  $('#release_note_popup').dialog({ autoOpen: false , width : 'auto' });
+
+  $("#release_note").live("click", function(e) {
+    $('#release_note_popup').dialog('open');
+  });
+
+
+</script>
