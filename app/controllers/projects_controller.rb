@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+
+  http_basic_authenticate_with name: "cruisecontrol", password: "password123"
+
   include ActionView::Helpers::TextHelper
 
   before_filter :disable_build_triggers, :only => [:build, :kill_build]
